@@ -1,0 +1,35 @@
+{
+	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
+	"type": "connection",
+	"id": "itsblue-scstw",
+	"name": "Speedclimbing Stopwatch",
+	"shortname": "ScStw",
+	"description": "Control and monitor the itsblue.de speedclimbing stopwatch (ScStw)",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-itsblue-scstw.git",
+	"bugs": "https://github.com/bitfocus/companion-module-itsblue-scstw/issues",
+	"maintainers": [
+		{
+			"name": "Dorian Zedler"
+		}
+	],
+	"runtime": {
+		"type": "node22",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../scstw-streamdeck/packages/companion/dist/main.js"
+	},
+	"legacyIds": [],
+	"manufacturer": "itsblue.de",
+	"products": [
+		"Speedclimbing Stopwatch"
+	],
+	"keywords": [
+		"speed climbing",
+		"stopwatch",
+		"timer",
+		"climbing",
+		"scstw"
+	]
+}

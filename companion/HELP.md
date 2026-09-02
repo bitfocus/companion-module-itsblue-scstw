@@ -1,4 +1,4 @@
-# companion-module-itsblue-scstw
+# Speedclimbing Stopwatch
 
 Connects Companion directly to the itsblue.de speedclimbing stopwatch (ScStw) over its binary WebSocket API.
 
@@ -18,17 +18,3 @@ For an enabled lane, its display is on the upper row and its Disable/Fall contro
 The primary control and a lane's Fall command require two presses within three seconds, matching the confirmation behavior of the starter web interface. The starter primary control deliberately does not reset a finished race. Use the separate **Reset race** action on a custom button when reset control is wanted.
 
 The connection uses `ws://10.4.99.1/api/v1/ws` with the required `ws-v1.proto.scstw.itsblue.de` subprotocol. Commands are never replayed after a reconnect.
-
-## Development
-
-The module implementation and its shared protocol core are provided by the `scstw-streamdeck` Git submodule. Initialize it before installing or building:
-
-```sh
-git submodule update --init --recursive
-corepack enable
-yarn install
-yarn build
-yarn package
-```
-
-`yarn package` creates an importable `itsblue-scstw-<version>.tgz` archive at the repository root.

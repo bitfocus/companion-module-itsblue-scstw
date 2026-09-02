@@ -1,0 +1,3 @@
+[submodule "scstw-streamdeck"]
+	path = scstw-streamdeck
+	url = https://github.com/Itsblue/scstw-streamdeck
