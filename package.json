@@ -1,16 +1,19 @@
 {
 	"name": "itsblue-scstw",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Companion integration for the itsblue.de speedclimbing stopwatch (ScStw)",
 	"main": "scstw-streamdeck/packages/companion/dist/main.js",
 	"type": "module",
 	"workspaces": [
 		"scstw-streamdeck/packages/companion",
-		"scstw-streamdeck/packages/core"
+		"scstw-streamdeck/packages/core",
+		"scstw-streamdeck/packages/renderer"
 	],
 	"scripts": {
-		"build": "yarn workspace @itsblue/scstw-streamdeck-core build && yarn workspace @itsblue/scstw-streamdeck-companion build",
-		"package": "yarn build && companion-module-build"
+		"build": "yarn check:sync-submodule && yarn workspace @itsblue/scstw-streamdeck-core build && yarn workspace @itsblue/scstw-streamdeck-renderer build && yarn workspace @itsblue/scstw-streamdeck-companion build",
+		"check:sync-submodule": "node scripts/sync-submodule.mjs --check",
+		"package": "yarn build && companion-module-build",
+		"sync-submodule": "node scripts/sync-submodule.mjs"
 	},
 	"engines": {
 		"node": "^22.20",
@@ -29,6 +32,7 @@
 		"@companion-module/tools": "^3.0.1",
 		"eslint": "^10.0.1",
 		"prettier": "^3.8.3",
+		"typescript": "~6.0.3",
 		"typescript-eslint": "^8.59.0"
 	},
 	"prettier": "@companion-module/tools/.prettierrc.json",

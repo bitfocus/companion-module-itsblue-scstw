@@ -1,3 +1,3 @@
 module.exports = {
-	extraFiles: ['LICENSE'],
+	extraFiles: ['scstw-streamdeck/packages/companion/dist/renderer-assets'],
 }

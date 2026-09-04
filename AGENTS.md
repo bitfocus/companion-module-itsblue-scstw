@@ -5,7 +5,8 @@
 This repository is the Bitfocus-facing publishing wrapper for the ScStw Companion connection. The implementation lives in the `scstw-streamdeck` Git submodule, primarily in:
 
 - `scstw-streamdeck/packages/companion`: Companion integration;
-- `scstw-streamdeck/packages/core`: shared protocol and stopwatch behavior.
+- `scstw-streamdeck/packages/core`: shared protocol and stopwatch behavior;
+- `scstw-streamdeck/packages/renderer`: deterministic button rendering shared by Companion and Elgato.
 
 Do not duplicate implementation or protocol logic in the outer repository. The outer repository should contain only the files and workspace configuration needed for Bitfocus to identify, build, package, document, and release the module.
 
@@ -17,18 +18,23 @@ Use Node.js 22.20 or a compatible Node 22 release and Yarn 4 with the `node-modu
 git submodule update --init --recursive
 corepack enable
 yarn install
+yarn sync-submodule
+yarn check:sync-submodule
 yarn build
 yarn companion-module-check
 yarn package
 ```
 
-Before a release, also verify that the generated package loads and that the shared core tests pass:
+Before a release, also verify that the generated package loads and that the shared core and renderer tests pass:
 
 ```sh
 yarn workspace @itsblue/scstw-streamdeck-core test
+yarn workspace @itsblue/scstw-streamdeck-renderer test
 ```
 
 Do not commit `node_modules`, `pkg`, or generated `.tgz` archives.
+
+The Companion build depends on the renderer's checked-in source assets and packages its WASM renderer, font, and third-party notices from the submodule. Keep those assets and notices in the submodule; do not duplicate them in the outer publishing wrapper.
 
 ## Files mirrored from the submodule
 
@@ -36,13 +42,18 @@ The outer repository must expose real files under `companion/` because Bitfocus 
 
 Keep these files synchronized whenever the nested module changes:
 
-| Outer publishing file | Nested source file | Sync rule |
-| --- | --- | --- |
-| `companion/HELP.md` | `scstw-streamdeck/packages/companion/companion/HELP.md` | Contents must be identical. |
-| `companion/manifest.json` | `scstw-streamdeck/packages/companion/companion/manifest.json` | All module metadata must match except for path-dependent fields described below. |
-| `package.json` | `scstw-streamdeck/packages/companion/package.json` | Release versions must match. Keep the outer workspace/build adapter and nested package names intentionally distinct. |
-| `LICENSE` | `scstw-streamdeck/LICENSE` | License text must remain identical. |
-| `build-config.cjs` | `scstw-streamdeck/packages/companion/build-config.cjs` | Keep packaging behavior equivalent while preserving their different relative paths to `LICENSE`. |
+```sh
+yarn sync-submodule
+```
+
+This copies the nested help and license, regenerates the outer manifest with its required path overrides, and synchronizes the nested Companion version, Node engine, module-base version, and module-tools version into the outer `package.json`. Use `yarn check:sync-submodule` to detect drift without modifying files. The normal build runs this check automatically.
+
+| Outer publishing file     | Nested source file                                            | Sync rule                                                                                                                                                                                 |
+| ------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `companion/HELP.md`       | `scstw-streamdeck/packages/companion/companion/HELP.md`       | Contents must be identical.                                                                                                                                                               |
+| `companion/manifest.json` | `scstw-streamdeck/packages/companion/companion/manifest.json` | All module metadata must match except for path-dependent fields described below.                                                                                                          |
+| `package.json`            | `scstw-streamdeck/packages/companion/package.json`            | The release version, Node engine, module-base version, and module-tools version are synchronized. Keep the outer workspace/build adapter and nested package names intentionally distinct. |
+| `LICENSE`                 | `scstw-streamdeck/LICENSE`                                    | `yarn sync-submodule` keeps the license text identical.                                                                                                                                   |
 
 The two manifests intentionally differ only where their filesystem locations require it:
 
@@ -57,9 +68,9 @@ Keep the source manifest `version` and `runtime.apiVersion` values at `0.0.0`. T
 
 - Repository: `companion-module-itsblue-scstw`
 - Package and manifest ID: `itsblue-scstw`
-- Legacy IDs: `companion-module-itsblue-scstw` and `scstw-stopwatch`
+- Legacy IDs: none; the empty list is intentional because no former IDs were published.
 
-Treat these identifiers as stable. Do not remove a legacy ID, as that would break migration of existing Companion configurations.
+Treat the repository and manifest identifiers as stable once the module has been published.
 
 ## Submodule changes
 

@@ -8,9 +8,9 @@ Connect the Companion computer to the stopwatch Ethernet network. The default ad
 
 The **Starter – 2×3 layout** preset group is ordered for a Stream Deck Mini:
 
-| Lane A upper | Lane B upper |
-| --- | --- |
-| Lane A lower | Lane B lower |
+| Lane A upper      | Lane B upper    |
+| ----------------- | --------------- |
+| Lane A lower      | Lane B lower    |
 | Secondary control | Primary / Ready |
 
 For an enabled lane, its display is on the upper row and its Disable/Fall control is on the lower row. When a lane is disabled, the two flip: Enable moves to the upper row and the read-only `OFF` display moves to the lower row. The action behavior flips with the labels, preventing an accidental press on `OFF` from enabling the lane.
@@ -27,8 +27,12 @@ The module implementation and its shared protocol core are provided by the `scst
 git submodule update --init --recursive
 corepack enable
 yarn install
+yarn sync-submodule
+yarn check:sync-submodule
 yarn build
 yarn package
 ```
+
+Run `yarn sync-submodule` after changing the help, manifest, license, release version, Node engine, or Companion dependency versions in the submodule. It updates the outer publishing files while retaining the path differences required by the wrapper repository. `yarn check:sync-submodule` detects drift without changing files and is also run automatically by `yarn build`.
 
 `yarn package` creates an importable `itsblue-scstw-<version>.tgz` archive at the repository root.

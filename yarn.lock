@@ -377,9 +377,13 @@ __metadata:
     "@companion-module/base": "npm:2.0.4"
     "@companion-module/tools": "npm:^3.0.1"
     "@itsblue/scstw-streamdeck-core": "npm:0.1.0"
+    "@itsblue/scstw-streamdeck-renderer": "npm:0.1.0"
     "@types/node": "npm:^22.19.17"
+    eslint: "npm:^10.0.1"
+    prettier: "npm:^3.8.3"
     rimraf: "npm:^6.1.3"
     typescript: "npm:~6.0.3"
+    typescript-eslint: "npm:^8.59.0"
   languageName: unknown
   linkType: soft
 
@@ -398,10 +402,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@itsblue/scstw-streamdeck-renderer@npm:0.1.0, @itsblue/scstw-streamdeck-renderer@workspace:scstw-streamdeck/packages/renderer":
+  version: 0.0.0-use.local
+  resolution: "@itsblue/scstw-streamdeck-renderer@workspace:scstw-streamdeck/packages/renderer"
+  dependencies:
+    "@itsblue/scstw-streamdeck-core": "npm:0.1.0"
+    "@resvg/resvg-wasm": "npm:2.6.2"
+    "@types/node": "npm:^22.19.17"
+    rimraf: "npm:^6.1.3"
+    tsx: "npm:^4.20.6"
+    typescript: "npm:~6.0.3"
+  languageName: unknown
+  linkType: soft
+
 "@pkgr/core@npm:^0.3.6":
   version: 0.3.6
   resolution: "@pkgr/core@npm:0.3.6"
   checksum: 10c0/153f0f4563f505faeba13c733efa0e05e467ce1c6b941055a5fd3b4560da60fbf1dff4b11da0075f034ddda11f2842b90395f60895dde5825875b616edccc11c
+  languageName: node
+  linkType: hard
+
+"@resvg/resvg-wasm@npm:2.6.2":
+  version: 2.6.2
+  resolution: "@resvg/resvg-wasm@npm:2.6.2"
+  checksum: 10c0/74eb061c53510dad516e42375d1802a5b70ff531abd3c858921178add5acd136382a2f0afc1bd83fa72ec2c2c9bd40a636000572a152b53a9b04e9c131ba0223
   languageName: node
   linkType: hard
 
@@ -1238,6 +1262,7 @@ __metadata:
     "@companion-module/tools": "npm:^3.0.1"
     eslint: "npm:^10.0.1"
     prettier: "npm:^3.8.3"
+    typescript: "npm:~6.0.3"
     typescript-eslint: "npm:^8.59.0"
   languageName: unknown
   linkType: soft
