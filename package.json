@@ -5,12 +5,12 @@
 	"main": "scstw-streamdeck/packages/companion/dist/main.js",
 	"type": "module",
 	"workspaces": [
-		"scstw-streamdeck/packages/companion",
-		"scstw-streamdeck/packages/core",
-		"scstw-streamdeck/packages/renderer"
+		"packages/companion",
+		"packages/core",
+		"packages/renderer"
 	],
 	"scripts": {
-		"build": "yarn check:sync-submodule && npm run build --workspace @itsblue/scstw-streamdeck-core && npm run build --workspace @itsblue/scstw-streamdeck-renderer && npm run build --workspace @itsblue/scstw-streamdeck-companion",
+		"build": "yarn check:sync-submodule && yarn workspace @itsblue/scstw-streamdeck-core build && yarn workspace @itsblue/scstw-streamdeck-renderer build && yarn workspace @itsblue/scstw-streamdeck-companion build",
 		"check:sync-submodule": "node scripts/sync-submodule.mjs --check",
 		"package": "yarn build && companion-module-build",
 		"sync-submodule": "node scripts/sync-submodule.mjs"

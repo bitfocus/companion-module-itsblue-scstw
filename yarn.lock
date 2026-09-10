@@ -370,9 +370,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@itsblue/scstw-streamdeck-companion@workspace:scstw-streamdeck/packages/companion":
+"@itsblue/scstw-streamdeck-companion@workspace:packages/companion":
   version: 0.0.0-use.local
-  resolution: "@itsblue/scstw-streamdeck-companion@workspace:scstw-streamdeck/packages/companion"
+  resolution: "@itsblue/scstw-streamdeck-companion@workspace:packages/companion"
   dependencies:
     "@companion-module/base": "npm:2.0.4"
     "@companion-module/tools": "npm:^3.0.1"
@@ -387,9 +387,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@itsblue/scstw-streamdeck-core@npm:0.1.0, @itsblue/scstw-streamdeck-core@workspace:scstw-streamdeck/packages/core":
+"@itsblue/scstw-streamdeck-core@npm:0.1.0, @itsblue/scstw-streamdeck-core@workspace:packages/core":
   version: 0.0.0-use.local
-  resolution: "@itsblue/scstw-streamdeck-core@workspace:scstw-streamdeck/packages/core"
+  resolution: "@itsblue/scstw-streamdeck-core@workspace:packages/core"
   dependencies:
     "@bufbuild/protobuf": "npm:^2.11.0"
     "@types/node": "npm:^22.19.17"
@@ -402,9 +402,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@itsblue/scstw-streamdeck-renderer@npm:0.1.0, @itsblue/scstw-streamdeck-renderer@workspace:scstw-streamdeck/packages/renderer":
+"@itsblue/scstw-streamdeck-renderer@npm:0.1.0, @itsblue/scstw-streamdeck-renderer@workspace:packages/renderer":
   version: 0.0.0-use.local
-  resolution: "@itsblue/scstw-streamdeck-renderer@workspace:scstw-streamdeck/packages/renderer"
+  resolution: "@itsblue/scstw-streamdeck-renderer@workspace:packages/renderer"
   dependencies:
     "@itsblue/scstw-streamdeck-core": "npm:0.1.0"
     "@resvg/resvg-wasm": "npm:2.6.2"
