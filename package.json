@@ -1,6 +1,6 @@
 {
 	"name": "itsblue-scstw",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Companion integration for the itsblue.de speedclimbing stopwatch (ScStw)",
 	"main": "scstw-streamdeck/packages/companion/dist/main.js",
 	"type": "module",
