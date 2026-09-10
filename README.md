@@ -35,4 +35,6 @@ yarn package
 
 Run `yarn sync-submodule` after changing the help, manifest, license, release version, Node engine, or Companion dependency versions in the submodule. It updates the outer publishing files while retaining the path differences required by the wrapper repository. `yarn check:sync-submodule` detects drift without changing files and is also run automatically by `yarn build`.
 
+Dependencies are installed with Yarn at the repository root. The build uses `npm run --workspace` to execute the submodule's existing scripts against that install. `yarn workspace` instead discovers the submodule's own `yarn.lock` and requires a separate install there, causing clean CI builds to fail. `npm run` only executes scripts; it does not install dependencies or create a lockfile.
+
 `yarn package` creates an importable `itsblue-scstw-<version>.tgz` archive at the repository root.

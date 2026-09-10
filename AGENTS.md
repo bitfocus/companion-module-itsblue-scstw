@@ -28,9 +28,11 @@ yarn package
 Before a release, also verify that the generated package loads and that the shared core and renderer tests pass:
 
 ```sh
-yarn workspace @itsblue/scstw-streamdeck-core test
-yarn workspace @itsblue/scstw-streamdeck-renderer test
+npm run test --workspace @itsblue/scstw-streamdeck-core
+npm run test --workspace @itsblue/scstw-streamdeck-renderer
 ```
+
+Use `npm run <script> --workspace <name>` to execute nested workspace scripts from the outer repository against the root Yarn install. `yarn workspace` discovers the submodule's own lockfile and requires a separate install there. Continue using Yarn for dependency installation and lockfile management.
 
 Do not commit `node_modules`, `pkg`, or generated `.tgz` archives.
 
